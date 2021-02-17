@@ -73,35 +73,35 @@ class MainActivity : AppCompatActivity() {
         // Melakukan pengecekan jika idNotification lebih kecil dari Max Notification
         if (idNotification < MAX_NOTIFICATION) {
             mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("New Email From " + stackNotif[idNotification].sender)
-                .setContentText(stackNotif[idNotification].message)
-                .setSmallIcon(R.drawable.ic_mail)
-                .setLargeIcon(largeIcon)
-                .setGroup(GROUP_KEY_EMAILS)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
+                    .setContentTitle("New Email From " + stackNotif[idNotification].sender)
+                    .setContentText(stackNotif[idNotification].message)
+                    .setSmallIcon(R.drawable.ic_mail)
+                    .setLargeIcon(largeIcon)
+                    .setGroup(GROUP_KEY_EMAILS)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
         } else {
 
             // jika idNotification lebih besar dari jumalah MAX_NOTIFICATION maka akan melakukan fungsi ini
             val inboxStyle = NotificationCompat.InboxStyle()
-                .addLine("New Email From " + stackNotif[idNotification].sender)
-                .addLine("New Email From " + stackNotif[idNotification -1 ].sender)
-                .setBigContentTitle("$idNotification new emails")
-                .setSummaryText("mail@google.com")
+                    .addLine("New Email From " + stackNotif[idNotification].sender)
+                    .addLine("New Email From " + stackNotif[idNotification -1 ].sender)
+                    .setBigContentTitle("$idNotification new emails")
+                    .setSummaryText("mail@google.com")
             mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("$idNotification new emails")
-                .setContentText("main@google.com")
-                .setSmallIcon(R.drawable.ic_mail)
-                .setGroup(GROUP_KEY_EMAILS)
-                .setGroupSummary(true)
-                .setContentIntent(pendingIntent)
-                .setStyle(inboxStyle)
-                .setAutoCancel(true)
+                    .setContentTitle("$idNotification new emails")
+                    .setContentText("main@google.com")
+                    .setSmallIcon(R.drawable.ic_mail)
+                    .setGroup(GROUP_KEY_EMAILS)
+                    .setGroupSummary(true)
+                    .setContentIntent(pendingIntent)
+                    .setStyle(inboxStyle)
+                    .setAutoCancel(true)
         }
 
-    /*
-    Untuk android Oreo ke atas perlu menambahkan notification channel
-    */
+        /*
+        Untuk android Oreo ke atas perlu menambahkan notification channel
+        */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // create or update
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
